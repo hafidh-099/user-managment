@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit User</title>
+</head>
+<body>
+  <%- include('./partials/dashboard.ejs') %>
+  <h2>Edit User: <%= user.username %></h2>
+  <form action="/edit/<%= user.id %>" method="POST">
+    <input type="text" name="username" value="<%= user.username %>" required /><br />
+    <input type="text" name="password" value="<%= user.password %>" required /><br />
+    <select name="role">
+      <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+      <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+    </select><br />
+    <button type="submit">Update</button>
+  </form>
+  <br />
+  <a href="/users">Back to Users List</a>
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
